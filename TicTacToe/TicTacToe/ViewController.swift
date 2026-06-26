@@ -157,6 +157,19 @@ final class ViewController: UIViewController {
         //check per vittoria
         if checkWin(player: currentPlayer) {
             updateStatus(text: "\((currentPlayer == .x) ? "X" : "O") wins!")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.resetGame()
+            }
+            return
+        }
+        
+        // check praeggio
+        if xMoves.count + oMoves.count == 9 {
+            updateStatus(text: "Draw")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.resetGame()
+            }
             return
         }
         
@@ -166,6 +179,7 @@ final class ViewController: UIViewController {
         
         //aggiorna il player
         updateCurrentPieceUI()
+        resetCurrentPiecePosition()
     }
     
     private func checkWin(player: Player) -> Bool {
@@ -226,13 +240,17 @@ final class ViewController: UIViewController {
             
         case .began:
             let location = gesture.location(in: piece)
-            piece.layer.setValue(CGPoint(x: location.x - piece.bounds.midX, y: location.y - piece.bounds.midY), forKey: "dragOffset")
-            view.addSubview(piece)
+            piece.layer.setValue(
+                CGPoint(
+                    x: location.x - piece.bounds.midX,
+                    y: location.y - piece.bounds.midY),
+                    forKey: "dragOffset")
+            //view.addSubview(piece)
             
         case .changed:
             //muove la pedina col dito
-            let location = gesture.location(in: view)
-            let offset = piece.layer.value(forKey: "dragOffset") as! CGPoint
+            //let location = gesture.location(in: view)
+            //let offset = piece.layer.value(forKey: "dragOffset") as! CGPoint
             
              piece.center = CGPoint(
                  x: piece.center.x + translation.x,
@@ -275,14 +293,41 @@ final class ViewController: UIViewController {
     }
     
     private func resetCurrentPiecePosition(){
-        UIView.animate(withDuration: 0.3){
-            self.currentPieceImageView.center = self.currentPieceContainer.center
-        }
+        /*
+         UIView.animate(withDuration: 0.3){
+             self.currentPieceImageView.center = self.currentPieceContainer.center
+         }
+         */
+        currentPieceContainer.addSubview(currentPieceImageView)
+        currentPieceImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            currentPieceImageView.centerXAnchor.constraint(equalTo: currentPieceContainer.centerXAnchor),
+            currentPieceImageView.centerYAnchor.constraint(equalTo: currentPieceContainer.centerYAnchor),
+            currentPieceImageView.widthAnchor.constraint(equalToConstant: 60),
+            currentPieceImageView.heightAnchor.constraint(equalTo: currentPieceImageView.widthAnchor)
+        ])
     }
     
     private func updateCurrentPieceUI(){
         let symbol = (currentPlayer == .x) ? "xmark.circle.fill" : "circle.fill"
         currentPieceImageView.image = UIImage(systemName: symbol)
+    }
+    
+    private func resetGame(){
+        xMoves.removeAll()
+        oMoves.removeAll()
+        currentPlayer = .x
+        
+        for cell in cells {
+            cell.subviews.forEach{
+                $0.removeFromSuperview()
+            }
+        }
+        
+        updateStatus(text: "New Game - X's turn")
+        updateCurrentPieceUI()
+        resetCurrentPiecePosition()
     }
 }
 
