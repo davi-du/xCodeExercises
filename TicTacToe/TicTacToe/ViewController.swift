@@ -206,6 +206,7 @@ final class ViewController: UIViewController {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             
+            //si rompe qui Exception    NSException *    "Unable to activate constraint with anchors <NSLayoutXAxisAnchor:0x102e0b4c0 \"UIImageView:0x105cc8800.centerX\"> and <NSLayoutXAxisAnchor:0x102e0bf80 \"UIView:0x102ef7100.centerX\"> because they have no common ancestor.  Does the constraint or its anchors reference items in different view hierarchies?  That's illegal."    0x0000000105d54ff0
             NSLayoutConstraint.activate([
                 imageView.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
                 imageView.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
@@ -225,7 +226,7 @@ final class ViewController: UIViewController {
             //muove la pedina col dito
             piece.center = CGPoint(
                 x: piece.center.x + translation.x,
-                y: piece.center.y + translation.y,
+                y: piece.center.y + translation.y
             )
             gesture.setTranslation(.zero, in: view)
         
@@ -234,7 +235,8 @@ final class ViewController: UIViewController {
             let location = gesture.location(in: boardContainer)
             
             guard let targetCell = cells.first(where: {
-                $0.frame.contains(location)
+                let cellFrame = $0.superview!.convert($0.frame, to: view)
+                return cellFrame.contains(location)
             }) else {
                 resetCurrentPiecePosition() //se non è sopra correttamente la resetta
                 return
@@ -263,7 +265,7 @@ final class ViewController: UIViewController {
     }
     
     private func updateCurrentPieceUI(){
-        let symbol = (currentPlayer == .x) ? "mark" : "circle"
+        let symbol = (currentPlayer == .x) ? "mark.circle.fill" : "circle.fill"
         currentPieceImageView.image = UIImage(systemName: symbol)
     }
 }
