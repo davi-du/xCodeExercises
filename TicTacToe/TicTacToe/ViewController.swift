@@ -206,12 +206,13 @@ final class ViewController: UIViewController {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFit
             
-            //si rompe qui Exception    NSException *    "Unable to activate constraint with anchors <NSLayoutXAxisAnchor:0x102e0b4c0 \"UIImageView:0x105cc8800.centerX\"> and <NSLayoutXAxisAnchor:0x102e0bf80 \"UIView:0x102ef7100.centerX\"> because they have no common ancestor.  Does the constraint or its anchors reference items in different view hierarchies?  That's illegal."    0x0000000105d54ff0
+            cell.addSubview(imageView)
+            
             NSLayoutConstraint.activate([
                 imageView.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
                 imageView.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
                 imageView.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.6),
-                imageView.heightAnchor.constraint(equalTo: imageView.heightAnchor)
+                imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
             ])
         }
     }
@@ -222,17 +223,26 @@ final class ViewController: UIViewController {
         let translation = gesture.translation(in: view)
         
         switch gesture.state {
-        case .began, .changed:
+            
+        case .began:
+            let location = gesture.location(in: piece)
+            piece.layer.setValue(CGPoint(x: location.x - piece.bounds.midX, y: location.y - piece.bounds.midY), forKey: "dragOffset")
+            view.addSubview(piece)
+            
+        case .changed:
             //muove la pedina col dito
-            piece.center = CGPoint(
-                x: piece.center.x + translation.x,
-                y: piece.center.y + translation.y
-            )
-            gesture.setTranslation(.zero, in: view)
-        
+            let location = gesture.location(in: view)
+            let offset = piece.layer.value(forKey: "dragOffset") as! CGPoint
+            
+             piece.center = CGPoint(
+                 x: piece.center.x + translation.x,
+                 y: piece.center.y + translation.y
+             )
+             //gesture.setTranslation(.zero, in: view)
+            
         case .ended:
             //controllo se sta su una cella valida
-            let location = gesture.location(in: boardContainer)
+            let location = gesture.location(in: view)
             
             guard let targetCell = cells.first(where: {
                 let cellFrame = $0.superview!.convert($0.frame, to: view)
@@ -251,7 +261,13 @@ final class ViewController: UIViewController {
             
             makeMove(index: index)
             updateBoardUI()
-            resetCurrentPiecePosition() //reset per turno successivo
+            
+            let targetCenter = targetCell.superview!.convert(targetCell.center, to: view)
+            
+            UIView.animate(withDuration: 0.2){
+                piece.center = targetCenter
+            }
+            //resetCurrentPiecePosition() //reset per turno successivo
         
         default:
             break
@@ -265,7 +281,7 @@ final class ViewController: UIViewController {
     }
     
     private func updateCurrentPieceUI(){
-        let symbol = (currentPlayer == .x) ? "mark.circle.fill" : "circle.fill"
+        let symbol = (currentPlayer == .x) ? "xmark.circle.fill" : "circle.fill"
         currentPieceImageView.image = UIImage(systemName: symbol)
     }
 }
