@@ -9,44 +9,56 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let costumer =
-        CostumerProfile(
-            firstName: "Antonio",
-            secondName: "Bianchi",
-            birthdate: {
-                        let isoDate = "1987-04-14T10:44:00+0000"
-                        let dateFormatter = ISO8601DateFormatter()
-                        return dateFormatter.date(from: isoDate)!
-                    }(),
-            email: "antoniobianchi@avanade.com",
-            phone: "+39 XXXXXXXXXX",
-            costumerCode: "ba1324",
-            iban: "ITXXXXXXXXXXXXXXXXXXXXXXXXX",
-            address: "Via Roma, 14, 00185 Roma RM, Italia"
-        )
+    @State private var costumer: CostumerProfile?
+    @State private var transactions: [Transaction] = []
+    @State private var isLoading = false
+    @State private var errorMessage: String?
     
     var body: some View {
-        VStack {
-            
-            TabView {
-                HomeView()
-                    .tabItem{
-                        Label("Home", systemImage: "house.fill")
-                    }
-                
-                ServicesView()
-                    .tabItem{
-                        Label("Servizi", systemImage: "bag.fill.badge.plus")
-                    }
-                
-                ProfileView(costumer: costumer)
-                    .tabItem{
-                        Label("Profilo", systemImage: "person.circle.fill")
-                    }
+        Group {
+            if let costumer {
+                TabView {
+                    HomeView(costumer: costumer, transactionList: transactions)
+                        .tabItem { Label("Home", systemImage: "house.fill") }
+                    
+                    PaymentsView()
+                        .tabItem { Label("Pay", systemImage: "dollarsign.circle.fill") }
+                    
+                    ServicesView()
+                        .tabItem { Label("Servizi", systemImage: "bag.fill.badge.plus") }
+                    
+                    ProfileView(costumer: costumer)
+                        .tabItem { Label("Profilo", systemImage: "person.circle.fill") }
+                }
+            } else if isLoading {
+                ProgressView("Caricamento...")
+            } else if let errorMessage {
+                Text("Errore: \(errorMessage)")
             }
         }
+        .task {
+            await loadData()
+        }
+    }
+    
+    private func loadData() async {
+        isLoading = true
+        errorMessage = nil
+        
+        do {
+            let result = try await CustomerService.fetchCustomerData()
+            print("Dati ricevuti con successo")
+            costumer = result.customer
+            transactions = result.transactions
+        } catch {
+            print("Errore catturato: \(error)")
+            errorMessage = error.localizedDescription
+        }
+        
+        isLoading = false
     }
 }
+
 
 #Preview {
     ContentView()

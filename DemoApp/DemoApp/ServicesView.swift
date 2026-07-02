@@ -41,26 +41,30 @@ struct ServicesView: View {
             iconName: "6.circle.fill"),
     ]
     
-    
     var body: some View {
-        ScrollView{
-            VStack{
-                Text("Scopri i nostri servizi")
-                    .background(.green)
-                
-                LazyVGrid(columns: [
-                    GridItem(.fixed(200)),
-                    GridItem(.fixed(200))
-                ]){
-                    //non serve binda
-                    ForEach(listaServizi) {
-                        servizio in
-                            ServiceCardView(bankService: servizio)
-                    }
+    
+        VStack {
+            Text("Scopri i nostri servizi")
+                .font(.title)
+                .padding(.bottom)
+                .padding(.leading)
+                .padding(.trailing)
+                .bold()
+            
+            LazyVGrid(columns: [
+                GridItem(.flexible(), spacing: 16),
+                GridItem(.flexible(), spacing: 16)
+            ], spacing: 16) {
+                ForEach(listaServizi) { servizio in
+                    ServiceCardView(bankService: servizio)
                 }
             }
+            .padding(.horizontal)
         }
+        .frame(maxWidth: .infinity)
     }
+
+    
 }
 
 #Preview {

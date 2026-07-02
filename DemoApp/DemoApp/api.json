@@ -1,0 +1,85 @@
+{
+  "customer": {
+    "firstName": "Mario",
+    "secondName": "Rossi",
+    "birthdate": "1987-04-14T10:44:00+0000",
+    "email": "antoniobianchi@avanade.com",
+    "phone": "+39 XXXXXXXXXX",
+    "costumerCode": "ba1324",
+    "iban": "ITXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "address": "Via Roma, 14, 00185 Roma RM, Italia",
+    "accountBalance": 1486.95
+  },
+  "transactions": [
+    {
+      "id": "a1b2c3d4-0001-4a1a-9c1a-000000000001",
+      "title": "Spesa supermercato",
+      "date": "2026-06-28T09:15:00+0000",
+      "amount": -42.80,
+      "category": "Spesa"
+    },
+    {
+      "id": "a1b2c3d4-0002-4a1a-9c1a-000000000002",
+      "title": "Stipendio",
+      "date": "2026-06-27T08:00:00+0000",
+      "amount": 1800.00,
+      "category": "Entrata"
+    },
+    {
+      "id": "a1b2c3d4-0003-4a1a-9c1a-000000000003",
+      "title": "Bolletta luce",
+      "date": "2026-06-25T14:30:00+0000",
+      "amount": -78.40,
+      "category": "Utenze"
+    },
+    {
+      "id": "a1b2c3d4-0004-4a1a-9c1a-000000000004",
+      "title": "Ristorante Da Mario",
+      "date": "2026-06-24T20:45:00+0000",
+      "amount": -56.00,
+      "category": "Ristorazione"
+    },
+    {
+      "id": "a1b2c3d4-0005-4a1a-9c1a-000000000005",
+      "title": "Abbonamento palestra",
+      "date": "2026-06-22T07:00:00+0000",
+      "amount": -35.00,
+      "category": "Sport"
+    },
+    {
+      "id": "a1b2c3d4-0006-4a1a-9c1a-000000000006",
+      "title": "Farmacia",
+      "date": "2026-06-20T11:20:00+0000",
+      "amount": -18.90,
+      "category": "Salute"
+    },
+    {
+      "id": "a1b2c3d4-0007-4a1a-9c1a-000000000007",
+      "title": "Bonifico da Luca Bianchi",
+      "date": "2026-06-18T16:10:00+0000",
+      "amount": 150.00,
+      "category": "Entrata"
+    },
+    {
+      "id": "a1b2c3d4-0008-4a1a-9c1a-000000000008",
+      "title": "Benzina",
+      "date": "2026-06-15T18:00:00+0000",
+      "amount": -65.30,
+      "category": "Trasporti"
+    },
+    {
+      "id": "a1b2c3d4-0009-4a1a-9c1a-000000000009",
+      "title": "Netflix",
+      "date": "2026-06-12T00:00:00+0000",
+      "amount": -12.99,
+      "category": "Intrattenimento"
+    },
+    {
+      "id": "a1b2c3d4-0010-4a1a-9c1a-000000000010",
+      "title": "Spesa supermercato",
+      "date": "2026-06-10T10:05:00+0000",
+      "amount": -33.15,
+      "category": "Spesa"
+    }
+  ]
+}

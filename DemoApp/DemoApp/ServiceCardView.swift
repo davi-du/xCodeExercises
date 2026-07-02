@@ -13,11 +13,31 @@ struct ServiceCardView: View {
     var body: some View {
         VStack{
             Image(systemName: bankService.iconName)
-                .imageScale(.large)
+                .foregroundColor(.white)
+                .font(.system(size: 60))
+                .padding(.top)
+            
             Text(bankService.title)
-                .bold()
+                .font(.title2)
+                .foregroundColor(.white)
+                .lineLimit(1)
+            
             Text(bankService.description)
+                .foregroundColor(.white)
+                .font(.caption)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
         }
+        .frame(width: 140, height: 140)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.blue)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+        )
     }
 }
 
@@ -25,7 +45,7 @@ struct ServiceCardView: View {
     ServiceCardView(bankService:
         BankService(
             title: "Title",
-            description: "Short description of the product",
+            description: "Short description of our product",
             iconName: "creditcard")
     )
 }
