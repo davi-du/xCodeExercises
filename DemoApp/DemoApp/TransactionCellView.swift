@@ -39,6 +39,6 @@ struct TransactionCellView: View {
 
 #Preview {
     TransactionCellView(transaction:
-        Transaction(id: UUID(), title: "Accredito stipendio", date: Date(), amount: 1456.79, category: "Accredito")
+        Transaction(id: "UUID()", title: "Accredito stipendio", date: Date(), amount: 1456.79, category: "Accredito")
     )
 }

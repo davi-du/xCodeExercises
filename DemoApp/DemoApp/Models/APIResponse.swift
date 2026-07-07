@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIResponse: Codable {
+struct APIResponse: Decodable {
     let customer: CostumerProfile
     let transactions: [Transaction]
 }

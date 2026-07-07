@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct Transaction : Codable, Identifiable {
-    let id : UUID
-    let title : String
-    let date : Date
-    let amount : Decimal
-    let category : String
+struct Transaction: Decodable, Identifiable {
+    //let id : UUID
+    let id: String
+    let title: String
+    let date: Date
+    let amount: Double
+    let category: String
 }

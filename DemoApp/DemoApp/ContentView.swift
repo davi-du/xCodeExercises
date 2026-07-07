@@ -6,29 +6,38 @@
 //
 
 import SwiftUI
-
 struct ContentView: View {
     
     @State private var costumer: CostumerProfile?
     @State private var transactions: [Transaction] = []
     @State private var isLoading = false
     @State private var errorMessage: String?
-    
+    @State private var selectedTab: Int = 0   // <-- nuovo
+
     var body: some View {
         Group {
             if let costumer {
-                TabView {
+                TabView(selection: $selectedTab) {   // <-- aggiunto selection
                     HomeView(costumer: costumer, transactionList: transactions)
                         .tabItem { Label("Home", systemImage: "house.fill") }
+                        .tag(0)
                     
-                    PaymentsView()
+                    PaymentsView(onPaymentCompleted: {
+                        Task {
+                            await loadData()   // ricarica dati aggiornati dal server
+                        }
+                        selectedTab = 0   // torna alla Home
+                    })
                         .tabItem { Label("Pay", systemImage: "dollarsign.circle.fill") }
+                        .tag(1)
                     
                     ServicesView()
                         .tabItem { Label("Servizi", systemImage: "bag.fill.badge.plus") }
+                        .tag(2)
                     
                     ProfileView(costumer: costumer)
                         .tabItem { Label("Profilo", systemImage: "person.circle.fill") }
+                        .tag(3)
                 }
             } else if isLoading {
                 ProgressView("Caricamento...")
@@ -47,11 +56,11 @@ struct ContentView: View {
         
         do {
             let result = try await CustomerService.fetchCustomerData()
-            print("Dati ricevuti con successo")
+            print("Data loaded")
             costumer = result.customer
-            transactions = result.transactions
+            transactions = result.transactions.sorted { $0.date > $1.date }  
         } catch {
-            print("Errore catturato: \(error)")
+            print("Error catched: \(error)")
             errorMessage = error.localizedDescription
         }
         
