@@ -1,0 +1,12 @@
+{
+  "name": "progetto-api",
+  "version": "1.0.0",
+  "description": "API con due GET e una POST su transactions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
