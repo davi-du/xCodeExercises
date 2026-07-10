@@ -32,13 +32,11 @@ struct TransactionCellView: View {
         .background(Color.white)
             .cornerRadius(12)
             .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
-        
-        Spacer()
     }
 }
 
 #Preview {
     TransactionCellView(transaction:
-        Transaction(id: "UUID()", title: "Accredito stipendio", date: Date(), amount: 1456.79, category: "Accredito")
+        Transaction(id: UUID().uuidString, title: "Accredito stipendio", date: Date(), amount: 1456.79, category: "Accredito")
     )
 }

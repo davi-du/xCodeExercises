@@ -81,3 +81,13 @@ Se vedi il JSON con `customer` e `transactions`, il server funziona correttament
   ipconfig getifaddr en0   
 
 - Ricorda di aggiungere l'eccezione ATS (`NSAllowsLocalNetworking`) nelle impostazioni Info del target Xcode, altrimenti iOS blocca le richieste `http://` non cifrate.
+
+## User e password per test
+- mario.rossi
+- Demo1234!
+
+- giulia.verdi
+- Verdi2026!
+
+- luca.bianchi
+- Bianchi99!

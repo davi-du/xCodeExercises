@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct PaymentsView: View {
-    
+
+    @Environment(SessionManager.self) private var session
+
     @State private var fullName = ""
     @State private var iban = ""
     @State private var amount: Decimal = 0
@@ -74,14 +76,14 @@ struct PaymentsView: View {
                 }
                 //data
                 Section {
-                    DatePicker("Data ", selection: $date, displayedComponents: .date)
+                    DatePicker("Data", selection: $date, displayedComponents: .date)
                 } header: {
                     Text("Emissione")
                 }
             }
             
             Button {
-                // Validazione PRIMA di avviare la richiesta di rete
+                // valido PRIMA di avviare la richiesta di rete, implodeva a caso
                 if let messaggioErrore = validaForm() {
                     errorMessage = messaggioErrore
                     return
@@ -90,6 +92,14 @@ struct PaymentsView: View {
                 Task {
                     isSubmitting = true
                     errorMessage = nil
+
+                    guard let token = session.token else {
+                        errorMessage = "Sessione scaduta, accedi di nuovo."
+                        isSubmitting = false
+                        session.logout()
+                        return
+                    }
+
                     do {
                         let amountDouble = -(NSDecimalNumber(decimal: amount).doubleValue)
 
@@ -97,7 +107,10 @@ struct PaymentsView: View {
                             title: causale,
                             date: date,
                             amount: amountDouble,
-                            category: "Bonifico"
+                            category: "Bonifico",
+                            beneficiary: fullName,
+                            beneficiaryIban: iban,
+                            token: token
                         )
 
                         fullName = ""
@@ -109,6 +122,10 @@ struct PaymentsView: View {
                         isSubmitting = false
                         onPaymentCompleted()
 
+                    } catch APIError.unauthorized {
+                        errorMessage = "Sessione scaduta, accedi di nuovo."
+                        isSubmitting = false
+                        session.logout()
                     } catch {
                         print("Errore invio pagamento: \(error)")
                         errorMessage = "Invio non riuscito, riprova."
@@ -144,17 +161,9 @@ struct PaymentsView: View {
     }
 }
 
-struct PaymentRequest {
-    let fullName: String
-    let iban: String
-    let amount: Decimal
-    let causale: String
-    let date: Date
-}
-
-
 #Preview {
     NavigationStack {
         PaymentsView()
     }
+    .environment(SessionManager())
 }

@@ -132,7 +132,7 @@ struct HomeView: View {
         ),
              transactionList: [
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -140,7 +140,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -148,7 +148,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -156,7 +156,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -164,7 +164,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -172,7 +172,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -180,7 +180,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -188,7 +188,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -196,7 +196,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,
@@ -204,7 +204,7 @@ struct HomeView: View {
                 ),
                 
                 Transaction(
-                    id: "UUID()",
+                    id: UUID().uuidString,
                     title: "Spesa supermercato",
                     date: Date(),
                     amount: -42.80,

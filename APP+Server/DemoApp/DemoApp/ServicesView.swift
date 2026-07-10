@@ -12,33 +12,33 @@ struct ServicesView: View {
     var listaServizi: [BankService] = [
         BankService(
             title: "Bonifici",
-            description: "Descrizione del servizio",
-            iconName: "1.circle.fill"),
+            description: "Invia denaro ovunque, in tempo reale.",
+            iconName: "arrow.left.arrow.right"),
         
         BankService(
             title: "Prestiti",
-            description: "Descrizione del servizio",
-            iconName: "2.circle.fill"),
+            description: "Liquidità su misura per i tuoi progetti.",
+            iconName: "banknote.fill"),
         
         BankService(
             title: "Mutui",
-            description: "Descrizione del servizio",
-            iconName: "3.circle.fill"),
+            description: "Realizza la casa dei tuoi sogni.",
+            iconName: "house.fill"),
         
         BankService(
             title: "Assicurazioni",
-            description: "Descrizione del servizio",
-            iconName: "4.circle.fill"),
+            description: "Proteggi te, la famiglia e i tuoi beni.",
+            iconName: "shield.fill"),
         
         BankService(
             title: "Investimenti",
-            description: "Descrizione del servizio",
-            iconName: "5.circle.fill"),
+            description: "Fai crescere i tuoi risparmi nel tempo.",
+            iconName: "chart.line.uptrend.xyaxis"),
         
         BankService(
             title: "Carte",
-            description: "Descrizione del servizio",
-            iconName: "6.circle.fill"),
+            description: "Carte di debito e credito su misura.",
+            iconName: "creditcard.fill"),
     ]
     
     var body: some View {

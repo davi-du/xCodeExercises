@@ -1,106 +1,90 @@
 {
-  "customer": {
-    "firstName": "Mario",
-    "secondName": "Rossi",
-    "birthdate": "1987-04-14T10:44:00+0000",
-    "email": "antoniobianchi@avanade.com",
-    "phone": "+39 XXXXXXXXXX",
-    "costumerCode": "ba1324",
-    "iban": "ITXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "address": "Via Roma, 14, 00185 Roma RM, Italia",
-    "accountBalance": 1486.95
-  },
-  "transactions": [
+  "users": [
     {
-      "id": "a1b2c3d4-0001-4a1a-9c1a-000000000001",
-      "title": "Spesa supermercato",
-      "date": "2026-06-28T09:15:00+0000",
-      "amount": -42.8,
-      "category": "Spesa"
+      "credentials": {
+        "username": "mario.rossi",
+        "password": "7c72d75983e2d66cc5809efaaadff7a9:2d4384b0a827b706ae6b21eacde0c77928754341ef63a12e5061b22bbe0216bb61d77758e274abb991b0a7e3544b9378bf9371d0939272f0e6733ff4a6248b5b"
+      },
+      "customer": {
+        "firstName": "Mario",
+        "secondName": "Rossi",
+        "birthdate": "1987-04-14T10:44:00+0000",
+        "email": "mario.rossi@example.com",
+        "phone": "+39 3331234567",
+        "costumerCode": "ba1324",
+        "iban": "IT60X0542811101000000123456",
+        "address": "Via Roma, 14, 00185 Roma RM, Italia",
+        "accountBalance": 1750.30
+      },
+      "transactions": [
+        { "id": "b1a10001-0000-4000-8000-000000000001", "title": "Stipendio", "date": "2026-06-27T08:00:00+0000", "amount": 1800, "category": "Entrata" },
+        { "id": "b1a10001-0000-4000-8000-000000000002", "title": "Spesa supermercato", "date": "2026-06-28T09:15:00+0000", "amount": -45.20, "category": "Spesa" },
+        { "id": "b1a10001-0000-4000-8000-000000000003", "title": "Bolletta luce", "date": "2026-06-29T14:30:00+0000", "amount": -62.10, "category": "Utenze" },
+        { "id": "b1a10001-0000-4000-8000-000000000004", "title": "Ristorante Da Mario", "date": "2026-07-01T20:45:00+0000", "amount": -38.50, "category": "Ristorazione" },
+        { "id": "b1a10001-0000-4000-8000-000000000005", "title": "Abbonamento palestra", "date": "2026-07-02T07:00:00+0000", "amount": -35, "category": "Sport" },
+        { "id": "b1a10001-0000-4000-8000-000000000006", "title": "Farmacia", "date": "2026-07-03T11:20:00+0000", "amount": -15.80, "category": "Salute" },
+        { "id": "b1a10001-0000-4000-8000-000000000007", "title": "Bonifico da Luca Bianchi", "date": "2026-07-04T16:10:00+0000", "amount": 80, "category": "Entrata" },
+        { "id": "b1a10001-0000-4000-8000-000000000008", "title": "Benzina", "date": "2026-07-05T18:00:00+0000", "amount": -55, "category": "Trasporti" },
+        { "id": "b1a10001-0000-4000-8000-000000000009", "title": "Netflix", "date": "2026-07-06T00:00:00+0000", "amount": -12.99, "category": "Intrattenimento" },
+        { "id": "b1a10001-0000-4000-8000-000000000010", "title": "Spesa supermercato", "date": "2026-07-08T10:05:00+0000", "amount": -28.40, "category": "Spesa" }
+      ]
     },
     {
-      "id": "a1b2c3d4-0002-4a1a-9c1a-000000000002",
-      "title": "Stipendio",
-      "date": "2026-06-27T08:00:00+0000",
-      "amount": 1800,
-      "category": "Entrata"
+      "credentials": {
+        "username": "giulia.verdi",
+        "password": "fa831ded9a5025a04ffdb9f2e380dc98:dfee13e505a17333ceb06446b7c4f6e45cd2849f14488fd9116773895bb9718b955f1c322aebdaef2ba47f8de32ce9ae42c12b306180933d4f50f5a4150379c2"
+      },
+      "customer": {
+        "firstName": "Giulia",
+        "secondName": "Verdi",
+        "birthdate": "1992-09-03T00:00:00+0000",
+        "email": "giulia.verdi@example.com",
+        "phone": "+39 3389876543",
+        "costumerCode": "gv2201",
+        "iban": "IT28W8000000292100645211151",
+        "address": "Corso Vittorio Emanuele II, 45, 20122 Milano MI, Italia",
+        "accountBalance": 3120.50
+      },
+      "transactions": [
+        { "id": "b1a20002-0000-4000-8000-000000000001", "title": "Bonifico da cliente - progetto grafico", "date": "2026-06-25T09:00:00+0000", "amount": 650, "category": "Entrata" },
+        { "id": "b1a20002-0000-4000-8000-000000000002", "title": "Spesa supermercato", "date": "2026-06-26T18:20:00+0000", "amount": -52.30, "category": "Spesa" },
+        { "id": "b1a20002-0000-4000-8000-000000000003", "title": "Coworking - abbonamento mensile", "date": "2026-06-28T08:00:00+0000", "amount": -120, "category": "Lavoro" },
+        { "id": "b1a20002-0000-4000-8000-000000000004", "title": "Ristorante", "date": "2026-06-30T20:30:00+0000", "amount": -42.00, "category": "Ristorazione" },
+        { "id": "b1a20002-0000-4000-8000-000000000005", "title": "Corsa in taxi", "date": "2026-07-02T22:15:00+0000", "amount": -18.50, "category": "Trasporti" },
+        { "id": "b1a20002-0000-4000-8000-000000000006", "title": "Farmacia", "date": "2026-07-03T12:00:00+0000", "amount": -9.90, "category": "Salute" },
+        { "id": "b1a20002-0000-4000-8000-000000000007", "title": "Acquisto online", "date": "2026-07-04T15:40:00+0000", "amount": -34.99, "category": "Shopping" },
+        { "id": "b1a20002-0000-4000-8000-000000000008", "title": "Spotify", "date": "2026-07-05T00:00:00+0000", "amount": -9.99, "category": "Intrattenimento" },
+        { "id": "b1a20002-0000-4000-8000-000000000009", "title": "Bolletta internet", "date": "2026-07-06T10:00:00+0000", "amount": -29.90, "category": "Utenze" },
+        { "id": "b1a20002-0000-4000-8000-000000000010", "title": "Affitto studio", "date": "2026-07-07T09:00:00+0000", "amount": -750, "category": "Bonifico" }
+      ]
     },
     {
-      "id": "a1b2c3d4-0003-4a1a-9c1a-000000000003",
-      "title": "Bolletta luce",
-      "date": "2026-06-25T14:30:00+0000",
-      "amount": -78.4,
-      "category": "Utenze"
-    },
-    {
-      "id": "a1b2c3d4-0004-4a1a-9c1a-000000000004",
-      "title": "Ristorante Da Mario",
-      "date": "2026-06-24T20:45:00+0000",
-      "amount": -56,
-      "category": "Ristorazione"
-    },
-    {
-      "id": "a1b2c3d4-0005-4a1a-9c1a-000000000005",
-      "title": "Abbonamento palestra",
-      "date": "2026-06-22T07:00:00+0000",
-      "amount": -35,
-      "category": "Sport"
-    },
-    {
-      "id": "a1b2c3d4-0006-4a1a-9c1a-000000000006",
-      "title": "Farmacia",
-      "date": "2026-06-20T11:20:00+0000",
-      "amount": -18.9,
-      "category": "Salute"
-    },
-    {
-      "id": "a1b2c3d4-0007-4a1a-9c1a-000000000007",
-      "title": "Bonifico da Luca Bianchi",
-      "date": "2026-06-18T16:10:00+0000",
-      "amount": 150,
-      "category": "Entrata"
-    },
-    {
-      "id": "a1b2c3d4-0008-4a1a-9c1a-000000000008",
-      "title": "Benzina",
-      "date": "2026-06-15T18:00:00+0000",
-      "amount": -65.3,
-      "category": "Trasporti"
-    },
-    {
-      "id": "a1b2c3d4-0009-4a1a-9c1a-000000000009",
-      "title": "Netflix",
-      "date": "2026-06-12T00:00:00+0000",
-      "amount": -12.99,
-      "category": "Intrattenimento"
-    },
-    {
-      "id": "a1b2c3d4-0010-4a1a-9c1a-000000000010",
-      "title": "Spesa supermercato",
-      "date": "2026-06-10T10:05:00+0000",
-      "amount": -33.15,
-      "category": "Spesa"
-    },
-    {
-      "id": "c6e55096-fd4c-4956-8c58-38d2397b42f2",
-      "title": "Prova pagamento",
-      "date": "2026-07-06T08:18:31+0000",
-      "amount": -100,
-      "category": "Bonifico"
-    },
-    {
-      "id": "4572890e-e849-4239-bb10-e24da77768f3",
-      "title": "Prova altro pagamento con ordine",
-      "date": "2026-07-06T08:28:25+0000",
-      "amount": -99,
-      "category": "Bonifico"
-    },
-    {
-      "id": "11f930d0-efc0-48c0-9335-460331df918e",
-      "title": "Aperitivo",
-      "date": "2026-07-07T07:33:34+0000",
-      "amount": -1230,
-      "category": "Bonifico"
+      "credentials": {
+        "username": "luca.bianchi",
+        "password": "4078873d1e3cf5e10b0733a2f677e397:5019734982140093801dd62472855c6d467bae905782d3de62765548a623931becb93f9c48357b2b85675989a9ae67f817bacd100ee85a0136ead15ca55f7691"
+      },
+      "customer": {
+        "firstName": "Luca",
+        "secondName": "Bianchi",
+        "birthdate": "2003-11-20T00:00:00+0000",
+        "email": "luca.bianchi@example.com",
+        "phone": "+39 3471122334",
+        "costumerCode": "lb0347",
+        "iban": "IT12C0300203280123456789012",
+        "address": "Via Po, 10, 10124 Torino TO, Italia",
+        "accountBalance": 410.75
+      },
+      "transactions": [
+        { "id": "b1a30003-0000-4000-8000-000000000001", "title": "Bonifico dai genitori", "date": "2026-06-29T10:00:00+0000", "amount": 300, "category": "Entrata" },
+        { "id": "b1a30003-0000-4000-8000-000000000002", "title": "Libri universitari", "date": "2026-06-30T09:30:00+0000", "amount": -85.00, "category": "Istruzione" },
+        { "id": "b1a30003-0000-4000-8000-000000000003", "title": "Mensa universitaria", "date": "2026-07-01T13:00:00+0000", "amount": -6.50, "category": "Ristorazione" },
+        { "id": "b1a30003-0000-4000-8000-000000000004", "title": "Abbonamento bus mensile", "date": "2026-07-02T08:00:00+0000", "amount": -38.00, "category": "Trasporti" },
+        { "id": "b1a30003-0000-4000-8000-000000000005", "title": "Cinema", "date": "2026-07-03T21:00:00+0000", "amount": -12.00, "category": "Intrattenimento" },
+        { "id": "b1a30003-0000-4000-8000-000000000006", "title": "Aperitivo", "date": "2026-07-04T19:30:00+0000", "amount": -14.50, "category": "Ristorazione" },
+        { "id": "b1a30003-0000-4000-8000-000000000007", "title": "Quota affitto condiviso", "date": "2026-07-05T09:00:00+0000", "amount": -300.00, "category": "Bonifico" },
+        { "id": "b1a30003-0000-4000-8000-000000000008", "title": "Videogioco", "date": "2026-07-06T17:00:00+0000", "amount": -59.99, "category": "Intrattenimento" },
+        { "id": "b1a30003-0000-4000-8000-000000000009", "title": "Mensa universitaria", "date": "2026-07-07T13:00:00+0000", "amount": -6.50, "category": "Ristorazione" }
+      ]
     }
   ]
 }
