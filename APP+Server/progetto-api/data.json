@@ -14,19 +14,102 @@
         "costumerCode": "ba1324",
         "iban": "IT60X0542811101000000123456",
         "address": "Via Roma, 14, 00185 Roma RM, Italia",
-        "accountBalance": 1750.30
+        "accountBalance": 1750.3
       },
       "transactions": [
-        { "id": "b1a10001-0000-4000-8000-000000000001", "title": "Stipendio", "date": "2026-06-27T08:00:00+0000", "amount": 1800, "category": "Entrata" },
-        { "id": "b1a10001-0000-4000-8000-000000000002", "title": "Spesa supermercato", "date": "2026-06-28T09:15:00+0000", "amount": -45.20, "category": "Spesa" },
-        { "id": "b1a10001-0000-4000-8000-000000000003", "title": "Bolletta luce", "date": "2026-06-29T14:30:00+0000", "amount": -62.10, "category": "Utenze" },
-        { "id": "b1a10001-0000-4000-8000-000000000004", "title": "Ristorante Da Mario", "date": "2026-07-01T20:45:00+0000", "amount": -38.50, "category": "Ristorazione" },
-        { "id": "b1a10001-0000-4000-8000-000000000005", "title": "Abbonamento palestra", "date": "2026-07-02T07:00:00+0000", "amount": -35, "category": "Sport" },
-        { "id": "b1a10001-0000-4000-8000-000000000006", "title": "Farmacia", "date": "2026-07-03T11:20:00+0000", "amount": -15.80, "category": "Salute" },
-        { "id": "b1a10001-0000-4000-8000-000000000007", "title": "Bonifico da Luca Bianchi", "date": "2026-07-04T16:10:00+0000", "amount": 80, "category": "Entrata" },
-        { "id": "b1a10001-0000-4000-8000-000000000008", "title": "Benzina", "date": "2026-07-05T18:00:00+0000", "amount": -55, "category": "Trasporti" },
-        { "id": "b1a10001-0000-4000-8000-000000000009", "title": "Netflix", "date": "2026-07-06T00:00:00+0000", "amount": -12.99, "category": "Intrattenimento" },
-        { "id": "b1a10001-0000-4000-8000-000000000010", "title": "Spesa supermercato", "date": "2026-07-08T10:05:00+0000", "amount": -28.40, "category": "Spesa" }
+        {
+          "id": "b1a10001-0000-4000-8000-000000000001",
+          "title": "Stipendio",
+          "date": "2026-06-27T08:00:00+0000",
+          "amount": 1800,
+          "category": "Entrata"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000002",
+          "title": "Spesa supermercato",
+          "date": "2026-06-28T09:15:00+0000",
+          "amount": -45.2,
+          "category": "Spesa"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000003",
+          "title": "Bolletta luce",
+          "date": "2026-06-29T14:30:00+0000",
+          "amount": -62.1,
+          "category": "Utenze"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000004",
+          "title": "Ristorante Da Mario",
+          "date": "2026-07-01T20:45:00+0000",
+          "amount": -38.5,
+          "category": "Ristorazione"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000005",
+          "title": "Abbonamento palestra",
+          "date": "2026-07-02T07:00:00+0000",
+          "amount": -35,
+          "category": "Sport"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000006",
+          "title": "Farmacia",
+          "date": "2026-07-03T11:20:00+0000",
+          "amount": -15.8,
+          "category": "Salute"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000007",
+          "title": "Bonifico da Luca Bianchi",
+          "date": "2026-07-04T16:10:00+0000",
+          "amount": 80,
+          "category": "Entrata"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000008",
+          "title": "Benzina",
+          "date": "2026-07-05T18:00:00+0000",
+          "amount": -55,
+          "category": "Trasporti"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000009",
+          "title": "Netflix",
+          "date": "2026-07-06T00:00:00+0000",
+          "amount": -12.99,
+          "category": "Intrattenimento"
+        },
+        {
+          "id": "b1a10001-0000-4000-8000-000000000010",
+          "title": "Spesa supermercato",
+          "date": "2026-07-08T10:05:00+0000",
+          "amount": -28.4,
+          "category": "Spesa"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-mario-001",
+          "title": "Estratto conto - Giugno 2026",
+          "date": "2026-07-01T00:00:00+0000",
+          "type": "Estratto conto",
+          "fileName": "mario_rossi_estratto_giugno_2026.pdf"
+        },
+        {
+          "id": "doc-mario-002",
+          "title": "Estratto conto - Luglio 2026 (parziale)",
+          "date": "2026-07-10T00:00:00+0000",
+          "type": "Estratto conto",
+          "fileName": "mario_rossi_estratto_luglio_2026.pdf"
+        },
+        {
+          "id": "doc-mario-003",
+          "title": "Contratto di Conto Corrente",
+          "date": "2019-03-10T00:00:00+0000",
+          "type": "Contratto",
+          "fileName": "mario_rossi_contratto.pdf"
+        }
       ]
     },
     {
@@ -43,19 +126,102 @@
         "costumerCode": "gv2201",
         "iban": "IT28W8000000292100645211151",
         "address": "Corso Vittorio Emanuele II, 45, 20122 Milano MI, Italia",
-        "accountBalance": 3120.50
+        "accountBalance": 3120.5
       },
       "transactions": [
-        { "id": "b1a20002-0000-4000-8000-000000000001", "title": "Bonifico da cliente - progetto grafico", "date": "2026-06-25T09:00:00+0000", "amount": 650, "category": "Entrata" },
-        { "id": "b1a20002-0000-4000-8000-000000000002", "title": "Spesa supermercato", "date": "2026-06-26T18:20:00+0000", "amount": -52.30, "category": "Spesa" },
-        { "id": "b1a20002-0000-4000-8000-000000000003", "title": "Coworking - abbonamento mensile", "date": "2026-06-28T08:00:00+0000", "amount": -120, "category": "Lavoro" },
-        { "id": "b1a20002-0000-4000-8000-000000000004", "title": "Ristorante", "date": "2026-06-30T20:30:00+0000", "amount": -42.00, "category": "Ristorazione" },
-        { "id": "b1a20002-0000-4000-8000-000000000005", "title": "Corsa in taxi", "date": "2026-07-02T22:15:00+0000", "amount": -18.50, "category": "Trasporti" },
-        { "id": "b1a20002-0000-4000-8000-000000000006", "title": "Farmacia", "date": "2026-07-03T12:00:00+0000", "amount": -9.90, "category": "Salute" },
-        { "id": "b1a20002-0000-4000-8000-000000000007", "title": "Acquisto online", "date": "2026-07-04T15:40:00+0000", "amount": -34.99, "category": "Shopping" },
-        { "id": "b1a20002-0000-4000-8000-000000000008", "title": "Spotify", "date": "2026-07-05T00:00:00+0000", "amount": -9.99, "category": "Intrattenimento" },
-        { "id": "b1a20002-0000-4000-8000-000000000009", "title": "Bolletta internet", "date": "2026-07-06T10:00:00+0000", "amount": -29.90, "category": "Utenze" },
-        { "id": "b1a20002-0000-4000-8000-000000000010", "title": "Affitto studio", "date": "2026-07-07T09:00:00+0000", "amount": -750, "category": "Bonifico" }
+        {
+          "id": "b1a20002-0000-4000-8000-000000000001",
+          "title": "Bonifico da cliente - progetto grafico",
+          "date": "2026-06-25T09:00:00+0000",
+          "amount": 650,
+          "category": "Entrata"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000002",
+          "title": "Spesa supermercato",
+          "date": "2026-06-26T18:20:00+0000",
+          "amount": -52.3,
+          "category": "Spesa"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000003",
+          "title": "Coworking - abbonamento mensile",
+          "date": "2026-06-28T08:00:00+0000",
+          "amount": -120,
+          "category": "Lavoro"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000004",
+          "title": "Ristorante",
+          "date": "2026-06-30T20:30:00+0000",
+          "amount": -42.0,
+          "category": "Ristorazione"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000005",
+          "title": "Corsa in taxi",
+          "date": "2026-07-02T22:15:00+0000",
+          "amount": -18.5,
+          "category": "Trasporti"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000006",
+          "title": "Farmacia",
+          "date": "2026-07-03T12:00:00+0000",
+          "amount": -9.9,
+          "category": "Salute"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000007",
+          "title": "Acquisto online",
+          "date": "2026-07-04T15:40:00+0000",
+          "amount": -34.99,
+          "category": "Shopping"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000008",
+          "title": "Spotify",
+          "date": "2026-07-05T00:00:00+0000",
+          "amount": -9.99,
+          "category": "Intrattenimento"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000009",
+          "title": "Bolletta internet",
+          "date": "2026-07-06T10:00:00+0000",
+          "amount": -29.9,
+          "category": "Utenze"
+        },
+        {
+          "id": "b1a20002-0000-4000-8000-000000000010",
+          "title": "Affitto studio",
+          "date": "2026-07-07T09:00:00+0000",
+          "amount": -750,
+          "category": "Bonifico"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-giulia-001",
+          "title": "Estratto conto - Giugno 2026",
+          "date": "2026-07-01T00:00:00+0000",
+          "type": "Estratto conto",
+          "fileName": "giulia_verdi_estratto_giugno_2026.pdf"
+        },
+        {
+          "id": "doc-giulia-002",
+          "title": "Estratto conto - Luglio 2026 (parziale)",
+          "date": "2026-07-09T00:00:00+0000",
+          "type": "Estratto conto",
+          "fileName": "giulia_verdi_estratto_luglio_2026.pdf"
+        },
+        {
+          "id": "doc-giulia-003",
+          "title": "Contratto di Conto Corrente",
+          "date": "2021-06-15T00:00:00+0000",
+          "type": "Contratto",
+          "fileName": "giulia_verdi_contratto.pdf"
+        }
       ]
     },
     {
@@ -75,15 +241,85 @@
         "accountBalance": 410.75
       },
       "transactions": [
-        { "id": "b1a30003-0000-4000-8000-000000000001", "title": "Bonifico dai genitori", "date": "2026-06-29T10:00:00+0000", "amount": 300, "category": "Entrata" },
-        { "id": "b1a30003-0000-4000-8000-000000000002", "title": "Libri universitari", "date": "2026-06-30T09:30:00+0000", "amount": -85.00, "category": "Istruzione" },
-        { "id": "b1a30003-0000-4000-8000-000000000003", "title": "Mensa universitaria", "date": "2026-07-01T13:00:00+0000", "amount": -6.50, "category": "Ristorazione" },
-        { "id": "b1a30003-0000-4000-8000-000000000004", "title": "Abbonamento bus mensile", "date": "2026-07-02T08:00:00+0000", "amount": -38.00, "category": "Trasporti" },
-        { "id": "b1a30003-0000-4000-8000-000000000005", "title": "Cinema", "date": "2026-07-03T21:00:00+0000", "amount": -12.00, "category": "Intrattenimento" },
-        { "id": "b1a30003-0000-4000-8000-000000000006", "title": "Aperitivo", "date": "2026-07-04T19:30:00+0000", "amount": -14.50, "category": "Ristorazione" },
-        { "id": "b1a30003-0000-4000-8000-000000000007", "title": "Quota affitto condiviso", "date": "2026-07-05T09:00:00+0000", "amount": -300.00, "category": "Bonifico" },
-        { "id": "b1a30003-0000-4000-8000-000000000008", "title": "Videogioco", "date": "2026-07-06T17:00:00+0000", "amount": -59.99, "category": "Intrattenimento" },
-        { "id": "b1a30003-0000-4000-8000-000000000009", "title": "Mensa universitaria", "date": "2026-07-07T13:00:00+0000", "amount": -6.50, "category": "Ristorazione" }
+        {
+          "id": "b1a30003-0000-4000-8000-000000000001",
+          "title": "Bonifico dai genitori",
+          "date": "2026-06-29T10:00:00+0000",
+          "amount": 300,
+          "category": "Entrata"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000002",
+          "title": "Libri universitari",
+          "date": "2026-06-30T09:30:00+0000",
+          "amount": -85.0,
+          "category": "Istruzione"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000003",
+          "title": "Mensa universitaria",
+          "date": "2026-07-01T13:00:00+0000",
+          "amount": -6.5,
+          "category": "Ristorazione"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000004",
+          "title": "Abbonamento bus mensile",
+          "date": "2026-07-02T08:00:00+0000",
+          "amount": -38.0,
+          "category": "Trasporti"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000005",
+          "title": "Cinema",
+          "date": "2026-07-03T21:00:00+0000",
+          "amount": -12.0,
+          "category": "Intrattenimento"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000006",
+          "title": "Aperitivo",
+          "date": "2026-07-04T19:30:00+0000",
+          "amount": -14.5,
+          "category": "Ristorazione"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000007",
+          "title": "Quota affitto condiviso",
+          "date": "2026-07-05T09:00:00+0000",
+          "amount": -300.0,
+          "category": "Bonifico"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000008",
+          "title": "Videogioco",
+          "date": "2026-07-06T17:00:00+0000",
+          "amount": -59.99,
+          "category": "Intrattenimento"
+        },
+        {
+          "id": "b1a30003-0000-4000-8000-000000000009",
+          "title": "Mensa universitaria",
+          "date": "2026-07-07T13:00:00+0000",
+          "amount": -6.5,
+          "category": "Ristorazione"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-luca-001",
+          "title": "Estratto conto - Giugno 2026",
+          "date": "2026-07-01T00:00:00+0000",
+          "type": "Estratto conto",
+          "fileName": "luca_bianchi_estratto_giugno_2026.pdf"
+        },
+        {
+          "id": "doc-luca-002",
+          "title": "Contratto di Conto Corrente",
+          "date": "2023-09-01T00:00:00+0000",
+          "type": "Contratto",
+          "fileName": "luca_bianchi_contratto.pdf"
+        }
       ]
     }
   ]

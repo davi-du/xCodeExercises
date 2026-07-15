@@ -8,8 +8,8 @@
 import Foundation
 import Security
 
-/// Wrapper minimo sulle API Security per salvare dati sensibili (es. il token di sessione)
-/// nel Keychain. Non usare UserDefaults per questo tipo di dati: non è storage sicuro.
+/// Wrapper minimo sulle API Security per salvare dati sensibili (tipo il token di sessione) nel Keychain.
+/// Non usare UserDefaults per questo tipo di dati non è storage sicuro.
 struct KeychainHelper {
 
     static func save(_ data: Data, service: String, account: String) {
@@ -19,7 +19,7 @@ struct KeychainHelper {
             kSecAttrAccount as String: account
         ]
 
-        // rimuovo eventuale valore precedente, cosi la save funziona anche come update
+        /// rimuovo eventuale valore precedente, cosi la save funziona anche come update
         SecItemDelete(query as CFDictionary)
 
         var attributes = query

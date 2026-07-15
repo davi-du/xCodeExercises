@@ -12,28 +12,11 @@ enum APIError: Error {
     case decodingError(Error)
 }
 
-struct TransactionRequest: Encodable {
-    let title: String
-    let date: String
-    let amount: Double
-    let category: String
-    let beneficiary: String?
-    let beneficiaryIban: String?
-}
-
-struct LoginRequest: Encodable {
-    let username: String
-    let password: String
-}
-
-struct LoginResponse: Decodable {
-    let token: String
-}
-
 struct CustomerService {
-    // da aggiornare se cambia l'indirizzo del server
+    
     static let baseURL = "http://localhost:3000"
-
+    
+    /// faceva storie
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -130,7 +113,6 @@ struct CustomerService {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        // Stesso formato usato dal server (es. 2026-07-06T20:00:00+0000)
         let dateString = dateFormatter.string(from: date)
 
         let body = TransactionRequest(
@@ -170,6 +152,63 @@ struct CustomerService {
         } catch {
             throw APIError.decodingError(error)
         }
+    }
+
+    static func fetchDocuments(token: String) async throws -> [DocumentSummary] {
+        guard let url = URL(string: "\(baseURL)/documents") else {
+            throw APIError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
+        }
+
+        if httpResponse.statusCode == 401 {
+            throw APIError.unauthorized
+        }
+
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw APIError.invalidResponse
+        }
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+        do {
+            return try decoder.decode([DocumentSummary].self, from: data)
+        } catch {
+            throw APIError.decodingError(error)
+        }
+    }
+
+    static func fetchDocumentFile(id: String, token: String) async throws -> Data {
+        guard let url = URL(string: "\(baseURL)/documents/\(id)") else {
+            throw APIError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
+        }
+
+        if httpResponse.statusCode == 401 {
+            throw APIError.unauthorized
+        }
+
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw APIError.invalidResponse
+        }
+
+        return data
     }
     
 }

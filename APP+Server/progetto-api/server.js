@@ -1,5 +1,4 @@
 // server.js
-// API con due GET (customer, transactions) e una POST (aggiunge una transazione)
 
 const express = require('express');
 const fs = require('fs');
@@ -9,6 +8,7 @@ const crypto = require('crypto');
 const app = express();
 const PORT = 3000;
 const DATA_FILE = path.join(__dirname, 'data.json');
+const DOCUMENTS_DIR = path.join(__dirname, 'documents');
 
 app.use(express.json());
 
@@ -49,9 +49,9 @@ function verifyPassword(password, stored) {
 // ---- Token: stesso principio di un JWT (header.payload.firma, firmato con HMAC-SHA256), ----
 // ---- implementato con crypto nativo cosi non serve installare la libreria jsonwebtoken. ----
 
-// In produzione questo va in una variabile d'ambiente, non hardcoded nel codice.
+// Lo so che in produzione questo va in una variabile d'ambiente, non hardcoded come nel codice.
 const TOKEN_SECRET = process.env.TOKEN_SECRET || 'demo-secret-da-cambiare-in-produzione';
-const TOKEN_TTL_MS = 2 * 60 * 60 * 1000; // 2 ore
+const TOKEN_TTL_MS = 2 * 60 * 60 * 1000; // 2 ore,anche troppo per quello che deve fare
 
 function base64url(input) {
   return Buffer.from(input).toString('base64')
@@ -143,7 +143,7 @@ app.get('/data', authenticateToken, (req, res) => {
     return res.status(404).json({ errore: 'Utente non trovato.' });
   }
 
-  // Restituisco solo i dati di QUESTO utente: mai credentials, mai i dati di altri utenti.
+  // restituire solo i dati di QUESTO utente
   res.json({
     customer: utente.customer,
     transactions: utente.transactions
@@ -178,12 +178,52 @@ app.post('/transactions', authenticateToken, (req, res) => {
 
   utente.transactions.push(nuovaTransazione);
 
-  // Aggiorna il saldo SOLO dell'utente autenticato (positivo = entrata, negativo = uscita).
+  // aggiorna il saldo dell'utente autenticato
   utente.customer.accountBalance = round2(utente.customer.accountBalance + amount);
 
   saveData(data);
 
   res.status(201).json(nuovaTransazione);
+});
+
+app.get('/documents', authenticateToken, (req, res) => {
+  const data = fetchData();
+  const utente = trovaUtente(data, req.user.username);
+
+  if (!utente) {
+    return res.status(404).json({ errore: 'Utente non trovato.' });
+  }
+
+  const elenco = (utente.documents || []).map(({ id, title, date, type }) => ({ id, title, date, type }));
+  res.json(elenco);
+});
+
+app.get('/documents/:id', authenticateToken, (req, res) => {
+  const data = fetchData();
+  const utente = trovaUtente(data, req.user.username);
+
+  if (!utente) {
+    return res.status(404).json({ errore: 'Utente non trovato.' });
+  }
+
+  // cerca il documento tra quelli di questo utente
+  // a un altro utente, per chi chiama e' 
+  // indistinguibile da un id inesistente (404 in entrambi i casi).
+  const documento = (utente.documents || []).find(d => d.id === req.params.id);
+
+  if (!documento) {
+    return res.status(404).json({ errore: 'Documento non trovato.' });
+  }
+
+  const filePath = path.join(DOCUMENTS_DIR, documento.fileName);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ errore: 'File non disponibile sul server.' });
+  }
+
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', `inline; filename="${documento.fileName}"`);
+  res.sendFile(filePath);
 });
 
 app.listen(PORT, () => {
