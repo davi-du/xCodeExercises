@@ -5,7 +5,6 @@
 //  Created by Davide Cidu on 16/07/2026.
 //
 
-
 import SwiftUI
 import SwiftData
 
@@ -25,55 +24,61 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                Form {
-                    Section("Testo") {
-                        TextField("Cerca in titolo o contenuto", text: $searchText)
-                    }
+            List {
+                Section("Testo") {
+                    TextField("Cerca in titolo o contenuto", text: $searchText)
+                }
 
-                    Section("Mood") {
-                        Picker("Mood", selection: $selectedMood) {
-                            Text("Tutti").tag(Mood?.none)
-                            Text("😊 Felice").tag(Mood?.some(.happy))
-                            Text("😢 Triste").tag(Mood?.some(.sad))
-                            Text("😠 Arrabbiato").tag(Mood?.some(.angry))
-                            Text("🤩 Emozionato").tag(Mood?.some(.excited))
-                            Text("😐 Annoiato").tag(Mood?.some(.bored))
+                Section("Mood") {
+                    Picker("Mood", selection: $selectedMood) {
+                        Text("Tutti").tag(Mood?.none)
+                        Text("😊 Felice").tag(Mood?.some(.happy))
+                        Text("😢 Triste").tag(Mood?.some(.sad))
+                        Text("😠 Arrabbiato").tag(Mood?.some(.angry))
+                        Text("🤩 Emozionato").tag(Mood?.some(.excited))
+                        Text("😐 Annoiato").tag(Mood?.some(.bored))
+                    }
+                }
+
+                Section("Tag") {
+                    Picker("Tag", selection: $selectedTag) {
+                        Text("Tutti").tag(Tag?.none)
+                        ForEach(allTags) { tag in
+                            Text(tag.name).tag(Tag?.some(tag))
                         }
                     }
+                }
 
-                    Section("Tag") {
-                        Picker("Tag", selection: $selectedTag) {
-                            Text("Tutti").tag(Tag?.none)
-                            ForEach(allTags) { tag in
-                                Text(tag.name).tag(Tag?.some(tag))
-                            }
-                        }
+                Section {
+                    Toggle("Filtra per data", isOn: $useDateFilter)
+                    if useDateFilter {
+                        DatePicker("Da", selection: $startDate, displayedComponents: .date)
+                        DatePicker("A", selection: $endDate, displayedComponents: .date)
                     }
+                }
 
-                    Section {
-                        Toggle("Filtra per data", isOn: $useDateFilter)
-                        if useDateFilter {
-                            DatePicker("Da", selection: $startDate, displayedComponents: .date)
-                            DatePicker("A", selection: $endDate, displayedComponents: .date)
-                        }
-                    }
-
+                Section {
                     Button("Cerca") {
                         runSearch()
                     }
                 }
-                .frame(height: 380)
 
-                List(results) { entry in
-                    NavigationLink {
-                        EntryDetailView(entry: entry)
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(entry.title).font(.headline)
-                            Text(entry.date, format: .dateTime.day().month().year())
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                Section("Risultati") {
+                    if results.isEmpty {
+                        Text("Nessuna voce trovata")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(results) { entry in
+                            NavigationLink {
+                                EntryDetailView(entry: entry)
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    Text(entry.title).font(.headline)
+                                    Text(entry.date, format: .dateTime.day().month().year())
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                         }
                     }
                 }
