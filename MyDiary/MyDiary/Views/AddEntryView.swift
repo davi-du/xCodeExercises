@@ -58,6 +58,13 @@ struct AddEntryView: View {
                             }
                         }
                         .foregroundStyle(.primary)
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                deleteTag(tag)
+                            } label: {
+                                Label("Elimina", systemImage: "trash")
+                            }
+                        }
                     }
 
                     HStack {
@@ -139,6 +146,11 @@ struct AddEntryView: View {
         newTagName = ""
     }
 
+    private func deleteTag(_ tag: Tag) {
+        selectedTags.remove(tag)
+        modelContext.delete(tag)
+    }
+    
     private func saveEntry() {
         let newEntry = DiaryEntry(title: title, date: date, content: content, mood: mood)
         newEntry.tags = Array(selectedTags)

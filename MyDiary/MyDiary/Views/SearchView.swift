@@ -89,8 +89,6 @@ struct SearchView: View {
     }
 
     private func runSearch() {
-        // Catturiamo i valori in costanti locali: #Predicate ne ha bisogno
-        // per generare codice compilato, non può leggere @State direttamente "al volo"
         let text = searchText
         let dateActive = useDateFilter
         let start = startDate
